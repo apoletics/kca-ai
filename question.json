@@ -298,5 +298,305 @@
             "D": "mutation: { spec: { containers: [{ resources: { limits: { cpu: '100m' } } }] } }"
         },
         "answer": "C"
+    },
+    {
+        "question": "Which Kyverno CRD aggregates policy compliance results across the cluster?",
+        "options": {
+            "A": "ClusterPolicyReport",
+            "B": "PolicyException",
+            "C": "ClusterPolicy",
+            "D": "ValidationFailure"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the `synchronize` field in generate rules?",
+        "options": {
+            "A": "Ensure generated resources match the policy",
+            "B": "Trigger periodic background scans",
+            "C": "Enable RBAC for generated resources",
+            "D": "Define the namespace for generated resources"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which command generates a policy report for all resources in a namespace?",
+        "options": {
+            "A": "kyverno report --namespace default",
+            "B": "kubectl get policyreports -n default",
+            "C": "kyverno generate report --namespace default",
+            "D": "kubectl apply -f report.yaml"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What is the correct CEL expression to check if a pod's CPU limit exceeds 500m?",
+        "options": {
+            "A": "request.object.spec.containers[0].resources.limits.cpu > '500m'",
+            "B": "object.spec.containers[0].resources.limits.cpu > 500m",
+            "C": "request.object.limits.cpu > '500m'",
+            "D": "object.resources.limits.cpu > 500m"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which field in a PolicyException CRD specifies policies to exclude?",
+        "options": {
+            "A": "policies",
+            "B": "targets",
+            "C": "exceptions",
+            "D": "resources"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you configure Kyverno to use an external API call in a policy?",
+        "options": {
+            "A": "context: [{ apiCall: { url: 'http://api.example.com' } }]",
+            "B": "variables: [{ apiCall: { url: 'http://api.example.com' } }]",
+            "C": "dataSources: [{ apiCall: { url: 'http://api.example.com' } }]",
+            "D": "sources: [{ apiCall: { url: 'http://api.example.com' } }]"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno metric tracks the total number of policy evaluations?",
+        "options": {
+            "A": "kyverno_policy_evaluations_total",
+            "B": "policy_rule_execution_latency_seconds",
+            "C": "policy_cache_size_bytes",
+            "D": "mutation_requests_total"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the default enforcement mode for validation rules?",
+        "options": {
+            "A": "Enforce",
+            "B": "Audit",
+            "C": "Warn",
+            "D": "DryRun"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which controller handles background scans for generate and mutate-existing policies?",
+        "options": {
+            "A": "Webhook server",
+            "B": "Background controller",
+            "C": "Report controller",
+            "D": "Certificate renewer"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you exclude a namespace from a policy using the exclude block?",
+        "options": {
+            "A": "exclude: { namespaces: [\"prod\"] }",
+            "B": "exclude: { resources: { namespaces: [\"prod\"] } }",
+            "C": "exclude: { any: [{ resources: { namespaces: [\"prod\"] } }] }",
+            "D": "exclude: { all: [{ resources: { namespaces: [\"prod\"] } }] }"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which CLI command checks policy compliance without modifying resources?",
+        "options": {
+            "A": "kyverno validate",
+            "B": "kyverno test",
+            "C": "kyverno apply --dry-run",
+            "D": "kyverno generate"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "What is the correct way to reference a variable from a configmap in a policy rule?",
+        "options": {
+            "A": "{{ myConfig.data.key }}",
+            "B": "{{ context.myConfig.data.key }}",
+            "C": "{{ variables.myConfig.data.key }}",
+            "D": "{{ dataSources.myConfig.data.key }}"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which policy type creates new Kubernetes resources based on a template?",
+        "options": {
+            "A": "Validation",
+            "B": "Mutation",
+            "C": "Generate",
+            "D": "Audit"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "How do you specify multiple match conditions in a policy rule?",
+        "options": {
+            "A": "match: { any: [{ resources: { kinds: ['Pod'] } }, { namespaces: ['prod'] }] }",
+            "B": "match: { all: [{ resources: { kinds: ['Pod'] } }, { namespaces: ['prod'] }] }",
+            "C": "match: { resources: { kinds: ['Pod'], namespaces: ['prod'] } }",
+            "D": "match: { any: { resources: { kinds: ['Pod'] } }, all: { namespaces: ['prod'] } }"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which Kyverno component dynamically configures admission webhooks?",
+        "options": {
+            "A": "Webhook controller",
+            "B": "Background controller",
+            "C": "Report controller",
+            "D": "Policy controller"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the 'background' field in a policy?",
+        "options": {
+            "A": "Apply policies to existing resources",
+            "B": "Enable periodic background scans",
+            "C": "Configure RBAC permissions",
+            "D": "Exclude resources from policy evaluation"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which command installs Kyverno in a highly available configuration with 3 replicas?",
+        "options": {
+            "A": "helm install kyverno kyverno/kyverno --set replicaCount=3",
+            "B": "kubectl apply -f https://kyverno.io/install/release-1.4/kyverno.yaml",
+            "C": "kyverno init --ha",
+            "D": "helm upgrade kyverno --replicas 3"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the correct way to write a JSON Patch RFC 6902 mutation rule?",
+        "options": {
+            "A": "patches: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]",
+            "B": "patchesJson6902: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]",
+            "C": "patchesStrategicMerge: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]",
+            "D": "mutation: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which flag in kyverno apply specifies a resource file to evaluate against a policy?",
+        "options": {
+            "A": "--policy",
+            "B": "--resource",
+            "C": "--cluster",
+            "D": "--output"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What is the primary purpose of the Common Expression Language (CEL) in Kyverno policies?",
+        "options": {
+            "A": "Define resource YAML structure",
+            "B": "Write conditional logic for policy rules",
+            "C": "Generate Kubernetes manifests",
+            "D": "Configure RBAC permissions"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which controller uses leader election for high availability?",
+        "options": {
+            "A": "Webhook server",
+            "B": "Generate controller",
+            "C": "Background controller",
+            "D": "Report controller"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What is the correct CEL expression to check if a pod has a label 'app=web'?",
+        "options": {
+            "A": "request.object.metadata.labels.app == 'web'",
+            "B": "request.object.labels.app == 'web'",
+            "C": "object.metadata.labels.app == 'web'",
+            "D": "request.labels.app == 'web'"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which command applies a policy to all resources in the current cluster?",
+        "options": {
+            "A": "kyverno apply --cluster",
+            "B": "kyverno apply --all",
+            "C": "kyverno apply --namespace all",
+            "D": "kyverno apply --resource all"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you reference a configmap in a policy's context?",
+        "options": {
+            "A": "context: [{ configMap: { name: 'my-config' } }]",
+            "B": "variables: [{ configMap: { name: 'my-config' } }]",
+            "C": "dataSources: [{ configMap: { name: 'my-config' } }]",
+            "D": "sources: [{ configMap: { name: 'my-config' } }]"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the 'failurePolicy' field in a policy?",
+        "options": {
+            "A": "Define how to handle policy evaluation errors",
+            "B": "Set the enforcement mode for validation rules",
+            "C": "Exclude resources from policy evaluation",
+            "D": "Configure RBAC permissions for the policy"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CLI command generates a test file for validating a policy against a resource?",
+        "options": {
+            "A": "kyverno test",
+            "B": "kyverno generate test",
+            "C": "kyverno create test",
+            "D": "kyverno validate"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "What is the correct way to write a strategic merge patch mutation rule?",
+        "options": {
+            "A": "patches: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]",
+            "B": "patchesJson6902: [{ op: 'add', path: '/spec/containers/0/resources', value: { limits: { cpu: '100m' } } }]",
+            "C": "patchesStrategicMerge: { spec: { containers: [{ resources: { limits: { cpu: '100m' } } }] } }",
+            "D": "mutation: { spec: { containers: [{ resources: { limits: { cpu: '100m' } } }] } }"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which CEL function checks if a string starts with 'prod-'?",
+        "options": {
+            "A": "startsWith(request.object.metadata.name, 'prod-')",
+            "B": "request.object.metadata.name.startsWith('prod-')",
+            "C": "string.startsWith(request.object.metadata.name, 'prod-')",
+            "D": "request.object.name.startsWith('prod-')"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which controller manages certificate renewal for webhooks?",
+        "options": {
+            "A": "Certificate renewer",
+            "B": "Webhook server",
+            "C": "Policy controller",
+            "D": "Report controller"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the default validationFailureAction for Kyverno policies?",
+        "options": {
+            "A": "Enforce",
+            "B": "Audit",
+            "C": "Warn",
+            "D": "Ignore"
+        },
+        "answer": "B"
     }
 ]
