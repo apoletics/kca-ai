@@ -2398,5 +2398,605 @@
             "D": "--manifests"
         },
         "answer": "B"
+    },
+    {
+        "question": "What is the stable API version used by Kyverno Policy and ClusterPolicy resources?",
+        "options": {
+            "A": "policies.kyverno.io/v1beta1",
+            "B": "kyverno.io/v1",
+            "C": "kyverno.io/v1alpha1",
+            "D": "policy.kyverno.io/v1"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which built-in variable contains the username from the incoming AdmissionReview?",
+        "options": {
+            "A": "request.userInfo.username",
+            "B": "request.user",
+            "C": "request.identity.name",
+            "D": "request.subject.username"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "During which operations is request.oldObject typically populated in Kyverno variables?",
+        "options": {
+            "A": "CREATE only",
+            "B": "UPDATE and DELETE",
+            "C": "CONNECT only",
+            "D": "All operations"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What does setting spec.background: false on a Kyverno policy do?",
+        "options": {
+            "A": "Runs the policy only on existing resources",
+            "B": "Disables variable substitution",
+            "C": "Applies the policy only to admission requests (not existing resources)",
+            "D": "Forces enforce mode for all rules"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Where is the failurePolicy (Fail/Ignore) configured for Kyverno’s admission behavior?",
+        "options": {
+            "A": "Inside each Kyverno Policy",
+            "B": "In the ClusterPolicy spec",
+            "C": "In the Validating/MutatingWebhookConfiguration",
+            "D": "In the API server runtime config"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "To enforce a policy in specific labeled namespaces while auditing others, which field in validationFailureActionOverrides selects namespaces by label?",
+        "options": {
+            "A": "namespaces",
+            "B": "namespaceSelector",
+            "C": "namespaceLabels",
+            "D": "selector"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field matches resources by specific annotations in a Kyverno rule?",
+        "options": {
+            "A": "spec.rules[].match.resources.annotations",
+            "B": "spec.rules[].match.annotations",
+            "C": "metadata.annotations",
+            "D": "spec.rules[].match.resources.annotationSelector"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "When generating a cluster-scoped resource in a Kyverno generate rule, how should the target be specified?",
+        "options": {
+            "A": "Include namespace: default",
+            "B": "Include namespace: kube-system",
+            "C": "Omit the namespace field",
+            "D": "Set namespace: cluster"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "With kyverno apply, which flag specifies the policy file to use?",
+        "options": {
+            "A": "--policy",
+            "B": "--rule",
+            "C": "--template",
+            "D": "--module"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "In verifyImages rules, which field instructs Kyverno to replace image tags with digests upon successful verification?",
+        "options": {
+            "A": "replaceTag",
+            "B": "mutateDigest",
+            "C": "digestOnly",
+            "D": "pinDigest"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "In verifyImages rules, which field is used to select the images to be verified?",
+        "options": {
+            "A": "images",
+            "B": "imagePatterns",
+            "C": "imageReferences",
+            "D": "containers"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "In Kyverno’s resourceFilters, which attribute can be used to exclude resources managed by Helm?",
+        "options": {
+            "A": "managedBy: Helm",
+            "B": "owner: Helm",
+            "C": "controller: helm-controller",
+            "D": "tool: helm"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which exclusion option in Kyverno’s resourceFilters allows skipping requests from specific user groups?",
+        "options": {
+            "A": "groups",
+            "B": "rbacGroups",
+            "C": "userGroups",
+            "D": "subjectGroups"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "How does Kyverno evaluate multiple rules within the same policy by default?",
+        "options": {
+            "A": "Random order",
+            "B": "Alphabetical by rule name",
+            "C": "Parallel execution",
+            "D": "Top to bottom as defined"
+        },
+        "answer": "D"
+    },
+    {
+        "question": "In Kyverno validate patterns, which wildcard matches any non-empty string?",
+        "options": {
+            "A": "?",
+            "B": "*",
+            "C": "%",
+            "D": "+"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which keys are valid at the top level of a Kyverno preconditions block?",
+        "options": {
+            "A": "all and any",
+            "B": "and and or",
+            "C": "match and exclude",
+            "D": "if and else"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "By default, generate rules are triggered by which operation on the trigger resource?",
+        "options": {
+            "A": "CREATE",
+            "B": "UPDATE",
+            "C": "DELETE",
+            "D": "CONNECT"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno rule match field limits evaluation to requests from subjects bound to specific cluster roles?",
+        "options": {
+            "A": "match.roles",
+            "B": "match.clusterRoles",
+            "C": "match.subjects.roles",
+            "D": "match.rbac.cluster"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which annotation is commonly used to give a human-friendly title to a policy?",
+        "options": {
+            "A": "policies.kyverno.io/title",
+            "B": "policies.kyverno.io/name",
+            "C": "policies.kyverno.io/summary",
+            "D": "policies.kyverno.io/label"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is a recommended way to make Kyverno controller Pods less likely to be evicted?",
+        "options": {
+            "A": "Set a high priorityClassName",
+            "B": "Disable liveness probes",
+            "C": "Run with hostNetwork: true",
+            "D": "Use a single large Pod"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which syntax is used for variable substitution in Kyverno policies?",
+        "options": {
+            "A": "$(var)",
+            "B": "${var}",
+            "C": "{{ variable }}",
+            "D": "[[ var ]]"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "In spec.rules[].match, what does using the all block imply?",
+        "options": {
+            "A": "The rule runs if any matcher matches",
+            "B": "The rule runs only if all matchers match",
+            "C": "It disables the exclude block",
+            "D": "It applies only in audit mode"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which built-in variable provides the label set of the target resource’s namespace?",
+        "options": {
+            "A": "request.object.metadata.labels",
+            "B": "request.namespaceLabels",
+            "C": "request.namespace.metadata.labels",
+            "D": "context.namespace.labels"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "To validate all container types in a Pod, which fields should be considered in patterns or foreach?",
+        "options": {
+            "A": "spec.containers only",
+            "B": "spec.initContainers only",
+            "C": "spec.containers, spec.initContainers, spec.ephemeralContainers",
+            "D": "spec.containers and spec.volumes"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which Kyverno CRD enables scheduled deletion of resources at the cluster scope?",
+        "options": {
+            "A": "CleanupPolicy",
+            "B": "ClusterCleanupPolicy",
+            "C": "GarbageCollectPolicy",
+            "D": "PrunePolicy"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which command displays built-in help and usage information for Kyverno commands?",
+        "options": {
+            "A": "kyverno --help",
+            "B": "kyverno about",
+            "C": "kyverno man",
+            "D": "kyverno usage"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kubernetes operation type corresponds to commands like kubectl exec and kubectl port-forward?",
+        "options": {
+            "A": "PATCH",
+            "B": "CONNECT",
+            "C": "APPLY",
+            "D": "MERGE"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which report resource is namespaced and summarizes policy results for that namespace?",
+        "options": {
+            "A": "PolicyReport",
+            "B": "ClusterPolicyReport",
+            "C": "NamespacePolicyReport",
+            "D": "RuleReport"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno rule type is best suited to add mandatory labels to incoming resources?",
+        "options": {
+            "A": "validate",
+            "B": "mutate",
+            "C": "generate",
+            "D": "verifyImages"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which Kyverno rule type is best suited to block the creation of resources missing required labels?",
+        "options": {
+            "A": "mutate",
+            "B": "validate",
+            "C": "generate",
+            "D": "cleanup"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which Kyverno rule types only execute during admission requests and do not run in background scans?",
+        "options": {
+            "A": "validate only",
+            "B": "mutate and verifyImages",
+            "C": "generate only",
+            "D": "validate and generate"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "If a rule’s preconditions evaluate to false, how does Kyverno handle that rule?",
+        "options": {
+            "A": "The rule denies the request",
+            "B": "The rule is skipped and not evaluated further",
+            "C": "The rule is evaluated in audit mode only",
+            "D": "The rule is retried with backoff"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field matches target API groups in a Kyverno rule?",
+        "options": {
+            "A": "spec.rules[].match.resources.groups",
+            "B": "spec.rules[].match.resources.apiGroups",
+            "C": "spec.rules[].match.api.groups",
+            "D": "spec.rules[].apiGroups"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field matches specific API versions in a Kyverno rule?",
+        "options": {
+            "A": "spec.rules[].match.resources.apiVersions",
+            "B": "spec.rules[].match.resources.version",
+            "C": "spec.rules[].match.api.version",
+            "D": "spec.rules[].match.resources.versions"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you limit a rule to only CREATE and UPDATE operations?",
+        "options": {
+            "A": "spec.rules[].operations: [CREATE, UPDATE]",
+            "B": "spec.rules[].match.resources.ops: [CREATE, UPDATE]",
+            "C": "spec.rules[].match.resources.operations: [CREATE, UPDATE]",
+            "D": "spec.rules[].match.operations: [CREATE, UPDATE]"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Can Kyverno configure a custom HTTP status code when denying a request?",
+        "options": {
+            "A": "Yes, using spec.statusCode",
+            "B": "Yes, using validate.status",
+            "C": "Yes, using validationFailureStatus",
+            "D": "No; Kyverno denies with a message and standard status"
+        },
+        "answer": "D"
+    },
+    {
+        "question": "Which CRD schedules deletion of namespaced resources by selector and time?",
+        "options": {
+            "A": "CleanupPolicy",
+            "B": "ClusterCleanupPolicy",
+            "C": "GarbageCollector",
+            "D": "PruneJob"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "In a generate rule, which field lets you define the generated resource inline as a template?",
+        "options": {
+            "A": "templateRef",
+            "B": "data",
+            "C": "clone",
+            "D": "copyFrom"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Kyverno foreach can be used in which rule types?",
+        "options": {
+            "A": "validate only",
+            "B": "mutate only",
+            "C": "validate and mutate",
+            "D": "generate only"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which reporting resources capture per-admission-request results created by Kyverno?",
+        "options": {
+            "A": "PolicyReport",
+            "B": "ClusterPolicyReport",
+            "C": "AdmissionReport and ClusterAdmissionReport",
+            "D": "AuditEvent"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which built-in variable indicates the type of the current operation (e.g., CREATE, UPDATE)?",
+        "options": {
+            "A": "request.type",
+            "B": "request.operation",
+            "C": "request.verb",
+            "D": "request.op"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which built-in variable indicates if the request is a dry-run?",
+        "options": {
+            "A": "request.userInfo.dryRun",
+            "B": "request.options.dryRun",
+            "C": "request.dryRun",
+            "D": "request.meta.dryRun"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which field limits a rule to one or more specific namespace names?",
+        "options": {
+            "A": "spec.rules[].match.resources.names",
+            "B": "spec.rules[].match.resources.namespaces",
+            "C": "spec.rules[].match.namespaces",
+            "D": "spec.rules[].match.resources.ns"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How can you target requests from a specific ServiceAccount in a rule?",
+        "options": {
+            "A": "spec.rules[].match.resources.serviceAccount",
+            "B": "spec.rules[].match.subjects with kind: ServiceAccount",
+            "C": "spec.rules[].match.userInfo.serviceAccount",
+            "D": "spec.rules[].match.resources.saSelector"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "In verifyImages, which field enables keyless verification based on OIDC identities?",
+        "options": {
+            "A": "keyProvider: oidc",
+            "B": "keyless: true",
+            "C": "oidcVerify: true",
+            "D": "useSigstore: keyless"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "In verifyImages attestations, which field specifies the expected predicate type (e.g., SLSA or SPDX)?",
+        "options": {
+            "A": "type",
+            "B": "predicateType",
+            "C": "attestationType",
+            "D": "format"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which generate option creates targets from multiple matching source objects selected by labels?",
+        "options": {
+            "A": "clone",
+            "B": "cloneList",
+            "C": "templateRef",
+            "D": "multiSource"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "With generate.synchronize: true, what happens if the source object is deleted?",
+        "options": {
+            "A": "The generated resource remains unchanged",
+            "B": "Kyverno re-clones from the last known source",
+            "C": "The generated resource is also removed",
+            "D": "Kyverno switches to audit mode"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "If both a Policy and a ClusterPolicy match the same object and one denies the request, what is the outcome?",
+        "options": {
+            "A": "Policy takes precedence over ClusterPolicy",
+            "B": "ClusterPolicy takes precedence over Policy",
+            "C": "The request is allowed if either allows",
+            "D": "The request is denied"
+        },
+        "answer": "D"
+    },
+    {
+        "question": "How can you exclude namespaces by label in a Kyverno rule?",
+        "options": {
+            "A": "spec.rules[].exclude.namespaces.labels",
+            "B": "spec.rules[].exclude.resources.namespaceSelector",
+            "C": "spec.rules[].exclude.namespaceLabels",
+            "D": "spec.rules[].exclude.selector.namespace"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which endpoint path exposes Kyverno Prometheus metrics?",
+        "options": {
+            "A": "/healthz",
+            "B": "/metrics",
+            "C": "/debug",
+            "D": "/stats"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Kyverno can enforce policies on non-resource URLs (e.g., /healthz). Is this supported?",
+        "options": {
+            "A": "Yes, via match.nonResourceURLs",
+            "B": "Yes, via match.httpPaths",
+            "C": "No, Kyverno only matches Kubernetes resources",
+            "D": "Only in audit mode"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which ValidatingWebhookConfiguration setting controls how long the API server waits for Kyverno before applying failurePolicy?",
+        "options": {
+            "A": "sideEffects",
+            "B": "timeoutSeconds",
+            "C": "admissionReviewVersions",
+            "D": "conversionReview"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Where are CEL-based validations defined in a Kyverno rule?",
+        "options": {
+            "A": "spec.rules[].cel",
+            "B": "spec.rules[].validate.cel",
+            "C": "spec.rules[].validate.expressions",
+            "D": "spec.rules[].conditions.cel"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Can mutate rules modify the status subresource of Kubernetes objects?",
+        "options": {
+            "A": "Yes, using patchStrategicMerge",
+            "B": "Yes, using patchesJson6902",
+            "C": "No, mutating status is not supported",
+            "D": "Only during background processing"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "PolicyException is scoped in which way?",
+        "options": {
+            "A": "Cluster-scoped only",
+            "B": "Namespaced; create it in the same namespace as the workload to exempt",
+            "C": "Either namespaced or cluster-scoped based on a flag",
+            "D": "It is an annotation, not a resource"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which rule types honor policy-level background processing for existing resources?",
+        "options": {
+            "A": "validate and generate",
+            "B": "mutate and generate",
+            "C": "validate and mutate",
+            "D": "mutate only"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Where are Kyverno’s global settings like resourceFilters typically configured?",
+        "options": {
+            "A": "In a Secret named kyverno-config",
+            "B": "In a ConfigMap named kyverno in the kyverno namespace",
+            "C": "In each Policy’s metadata.labels",
+            "D": "In kube-system/kyverno-settings"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field in patchesJson6902 specifies the patch content for a rule?",
+        "options": {
+            "A": "jsonPatch",
+            "B": "patch",
+            "C": "operations",
+            "D": "payload"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "To match CRD objects themselves (not their instances), which kind would you use in a rule?",
+        "options": {
+            "A": "CustomResource",
+            "B": "APIResource",
+            "C": "CustomResourceDefinition",
+            "D": "ThirdPartyResource"
+        },
+        "answer": "C"
     }
 ]
