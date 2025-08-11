@@ -1198,5 +1198,605 @@
             "D": "Configure `customCA: true` in the Kyverno Helm values"
         },
         "answer": "B"
+    },
+    {
+        "question": "How do you create a time-limited PolicyException that expires after 7 days?",
+        "options": {
+            "A": "Add `expires: 7d` in the exception spec",
+            "B": "Set `ttl: 168h` in the exception metadata",
+            "C": "Include `duration: 7` in the exception spec with `unit: days`",
+            "D": "PolicyExceptions cannot be time-limited"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CEL expression converts a CPU limit string '500m' to its millicore numeric value?",
+        "options": {
+            "A": "parseInt(request.object.spec.containers[0].resources.limits.cpu.replace('m', ''))",
+            "B": "request.object.spec.containers[0].resources.limits.cpu.toMillicores()",
+            "C": "cpu(request.object.spec.containers[0].resources.limits.cpu)",
+            "D": "request.object.spec.containers[0].resources.limits.cpu.numericValue()"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the `failurePolicy` in a ValidatingWebhookConfiguration used by Kyverno?",
+        "options": {
+            "A": "Defines how to handle policy evaluation errors",
+            "B": "Specifies whether to allow or block resources when the webhook is unavailable",
+            "C": "Configures retry logic for failed webhook calls",
+            "D": "Sets the severity level for policy violations"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field in a generate rule allows you to use a template from a ConfigMap?",
+        "options": {
+            "A": "templateFrom: { configMap: { name: 'my-templates', key: 'pod-template' } }",
+            "B": "configMapTemplate: 'my-templates/pod-template'",
+            "C": "templateSource: { configMap: 'my-templates', entry: 'pod-template' }",
+            "D": "useTemplate: 'configmap://my-templates/pod-template'"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you exclude resources with a label selector `env in (dev, test)` from a policy?",
+        "options": {
+            "A": "exclude: { any: [{ resources: { selector: { matchExpressions: [{ key: 'env', operator: 'In', values: ['dev', 'test'] }] } }] }",
+            "B": "exclude: { labels: { env: ['dev', 'test'] } }",
+            "C": "exclude: { resources: { labelSelector: 'env in (dev,test)' } }",
+            "D": "exclude: { selectors: [{ env: ['dev', 'test'] }] }"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno CLI command exports policy metrics in Prometheus format?",
+        "options": {
+            "A": "kyverno metrics export",
+            "B": "kyverno get metrics --format prometheus",
+            "C": "kyverno metrics --prometheus",
+            "D": "Kyverno CLI does not export metrics; metrics are exposed by the controller"
+        },
+        "answer": "D"
+    },
+    {
+        "question": "What is the effect of `validationFailureAction: Audit` on a policy with `background: false`?",
+        "options": {
+            "A": "Evaluates only new resources and logs violations",
+            "B": "Evaluates existing resources and blocks non-compliant ones",
+            "C": "Ignores existing resources but audits new ones",
+            "D": "Audits all resources (existing and new) continuously"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CEL expression checks if any container in a pod has a memory limit defined?",
+        "options": {
+            "A": "request.object.spec.containers.any(c, c.resources.limits.memory.exists())",
+            "B": "any(request.object.spec.containers, c, c.resources.limits.memory != null)",
+            "C": "request.object.spec.containers.all(c, c.resources.limits.memory exists)",
+            "D": "request.object.spec.containers.some(c => c.resources.limits.memory)"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you configure Kyverno to use a custom webhook port instead of the default 9443?",
+        "options": {
+            "A": "Set `webhook.port` in the Kyverno Helm values",
+            "B": "Modify the `kyverno-config` ConfigMap's `webhookPort` key",
+            "C": "Use `--webhook-port=8443` in the Kyverno deployment command",
+            "D": "Kyverno webhook port is fixed and cannot be changed"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the `severity` field in a policy rule?",
+        "options": {
+            "A": "Determines the order of policy execution",
+            "B": "Sets the priority level for policy evaluation",
+            "C": "Classifies violations in PolicyReports (e.g., Low, High)",
+            "D": "Defines the timeout for rule evaluation"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "Which rule type can both validate and mutate resources in a single rule?",
+        "options": {
+            "A": "CombinedRule",
+            "B": "ValidateMutate",
+            "C": "Kyverno rules can only perform one action per rule",
+            "D": "MultiActionRule"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "How do you reference a field from another namespace's ConfigMap in a policy?",
+        "options": {
+            "A": "context: [{ configMap: { name: 'my-config', namespace: 'shared' } }]",
+            "B": "context: [{ configMap: 'shared/my-config' }]",
+            "C": "variables: [{ configMap: { name: 'my-config', fromNamespace: 'shared' } }]",
+            "D": "Kyverno can only reference ConfigMaps in the same namespace as the policy"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which command describes the details of a specific ClusterPolicy, including its rules?",
+        "options": {
+            "A": "kubectl describe clusterpolicy my-policy",
+            "B": "kyverno explain clusterpolicy my-policy",
+            "C": "kubectl get clusterpolicy my-policy -o yaml",
+            "D": "kyverno describe policy my-policy --cluster"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the default cache duration for Kyverno policy evaluations?",
+        "options": {
+            "A": "1 minute",
+            "B": "5 minutes",
+            "C": "10 minutes",
+            "D": "30 minutes"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which CEL expression checks if a pod's service account is not 'default'?",
+        "options": {
+            "A": "request.object.spec.serviceAccountName != 'default'",
+            "B": "request.object.spec.serviceAccount != 'default'",
+            "C": "request.object.serviceAccountName != 'default'",
+            "D": "object.spec.serviceAccountName != 'default'"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you configure a generate rule to create a resource in the same namespace as the source resource?",
+        "options": {
+            "A": "Set `targetNamespace: {{request.object.metadata.namespace}}`",
+            "B": "Omit `targetNamespace` (default behavior)",
+            "C": "Set `targetNamespace: same`",
+            "D": "Use `namespace: {{source.namespace}}`"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno component is responsible for caching policy evaluations to improve performance?",
+        "options": {
+            "A": "Cache controller",
+            "B": "Evaluation controller",
+            "C": "Webhook server",
+            "D": "Policy controller"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "What is the effect of `ignoreExisting: true` in a mutate-existing rule?",
+        "options": {
+            "A": "Applies the mutation only to new resources, not existing ones",
+            "B": "Skips mutation for resources that already exist when the policy is applied",
+            "C": "Ignores existing mutations on resources",
+            "D": "Overwrites all existing fields with the mutation"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you set a custom message for a PolicyException in reports?",
+        "options": {
+            "A": "Add `message: 'Temporary exception for maintenance'` in the exception spec",
+            "B": "Set `exceptionMessage` in the exception metadata",
+            "C": "PolicyExceptions cannot have custom messages",
+            "D": "Use `note: 'Maintenance window'` in the exception spec"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CEL expression checks if a deployment's image is using a SHA digest (not a tag)?",
+        "options": {
+            "A": "request.object.spec.template.spec.containers[0].image.contains('@sha256:')",
+            "B": "request.object.spec.template.spec.containers[0].image matches '.*@sha256:.*'",
+            "C": "isDigest(request.object.spec.template.spec.containers[0].image)",
+            "D": "request.object.spec.template.spec.containers[0].image.endsWith('sha256')"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What permission is required for Kyverno to update existing resources with mutate-existing rules?",
+        "options": {
+            "A": "\"update\" on the target resource kind",
+            "B": "\"patch\" on the target resource kind",
+            "C": "\"edit\" cluster role",
+            "D": "\"mutate\" verb on the target resource kind"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you configure a policy to apply only during working hours (9am-5pm UTC)?",
+        "options": {
+            "A": "Use `schedule: '9-17 * * 1-5'` in the policy spec",
+            "B": "Kyverno does not support time-based policy scheduling",
+            "C": "Add a CEL condition checking the current time",
+            "D": "Set `activeHours: '09:00-17:00'` in the policy spec"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field in a PolicyReport indicates the time of the last policy evaluation?",
+        "options": {
+            "A": "lastEvaluated",
+            "B": "timestamp",
+            "C": "lastUpdateTime",
+            "D": "evaluationTime"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "What is the correct way to use a label from a namespace in a pod-focused policy?",
+        "options": {
+            "A": "context: [{ name: 'ns', apiCall: { url: '/api/v1/namespaces/{{request.object.metadata.namespace}}' } }]",
+            "B": "variables: [{ namespaceLabel: { key: 'env', fromNamespace: '{{request.namespace}}' } }]",
+            "C": "reference: { namespace: '{{request.namespace}}', field: 'metadata.labels.env' }",
+            "D": "Kyverno cannot reference namespace labels in pod policies"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CLI command displays the history of policy violations for a specific resource?",
+        "options": {
+            "A": "kyverno violations history pod/my-pod",
+            "B": "kubectl describe policyreport -l policy.kubernetes.io/resource=my-pod",
+            "C": "kyverno history pod/my-pod",
+            "D": "kubectl get policyreport -o jsonpath='{.results[?(@.resource.name==\"my-pod\")]}'"
+        },
+        "answer": "D"
+    },
+    {
+        "question": "What is the purpose of the `policy.kubernetes.io/skip` annotation?",
+        "options": {
+            "A": "Excludes a specific resource from all Kyverno policies",
+            "B": "Skips a single policy evaluation for a resource",
+            "C": "Disables mutation rules for a resource",
+            "D": "Marks a resource as compliant without evaluation"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CEL expression calculates the ratio of CPU limit to request for a container?",
+        "options": {
+            "A": "parseInt(request.object.spec.containers[0].resources.limits.cpu.replace('m', '')) / parseInt(request.object.spec.containers[0].resources.requests.cpu.replace('m', ''))",
+            "B": "request.object.spec.containers[0].resources.limits.cpu / request.object.spec.containers[0].resources.requests.cpu",
+            "C": "cpuLimit(request.object) / cpuRequest(request.object)",
+            "D": "toNumber(request.object.spec.containers[0].resources.limits.cpu) / toNumber(request.object.spec.containers[0].resources.requests.cpu)"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you configure Kyverno to log all policy evaluations to a file?",
+        "options": {
+            "A": "Set `logFile: /var/log/kyverno/evaluations.log` in the Kyverno config",
+            "B": "Add `--log-to-file` to the Kyverno deployment command",
+            "C": "Kyverno logs to stdout/stderr by default; use a sidecar to write to a file",
+            "D": "Configure `logging.file: true` in the Helm values"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "What is the effect of `synchronize: false` in a generate rule?",
+        "options": {
+            "A": "The generated resource is created once and not updated if the policy changes",
+            "B": "The generated resource is deleted when the policy is updated",
+            "C": "Kyverno stops monitoring the source resource for changes",
+            "D": "The generated resource is only created if the source resource is updated"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which field in a policy specifies the minimum Kyverno version required to enforce it?",
+        "options": {
+            "A": "minVersion",
+            "B": "kyvernoVersion",
+            "C": "requiredVersion",
+            "D": "minimumKyvernoVersion"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which type of policy report is generated for cluster-scoped resources like Node or Namespace?",
+        "options": {
+            "A": "NamespacePolicyReport",
+            "B": "ClusterPolicyReport",
+            "C": "GlobalPolicyReport",
+            "D": "AggregatedPolicyReport"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you configure Kyverno to perform background scans every 30 minutes?",
+        "options": {
+            "A": "Set `backgroundScanInterval: 30m` in the kyverno-config ConfigMap",
+            "B": "Use `--background-scan-interval=1800` when deploying Kyverno",
+            "C": "Add `schedule: '*/30 * * * *'` to the policy spec",
+            "D": "Modify the `kyverno` Deployment's `BACKGROUND_SCAN_INTERVAL` environment variable"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which CEL expression checks if a pod was created in the last 24 hours?",
+        "options": {
+            "A": "request.object.metadata.creationTimestamp.seconds > (now().seconds - 86400)",
+            "B": "request.object.metadata.creationTimestamp.seconds < (now().seconds - 86400)",
+            "C": "request.object.metadata.creationTimestamp.seconds >= (now().seconds - 86400)",
+            "D": "request.object.metadata.creationTimestamp.seconds <= (now().seconds - 86400)"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the valid range for the `webhookTimeoutSeconds` field in a policy?",
+        "options": {
+            "A": "1-10 seconds",
+            "B": "1-30 seconds",
+            "C": "5-60 seconds",
+            "D": "Unlimited"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "During resource admission, which type of rule executes first?",
+        "options": {
+            "A": "Validation rules",
+            "B": "Mutation rules",
+            "C": "Generate rules",
+            "D": "Image verification rules"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you verify a container image's Cosign signature in a Kyverno policy?",
+        "options": {
+            "A": "Use `verifyImages` with `type: cosign` and specify the public key",
+            "B": "Add `cosign: true` to the policy's `validate` section",
+            "C": "Include `cosignPublicKey: '-----BEGIN PUBLIC KEY-----...'` in the policy metadata",
+            "D": "Set `imageSignature: required` in the container spec"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is required to create a policy targeting a Custom Resource Definition (CRD)?",
+        "options": {
+            "A": "Define `apiGroups` and `kinds` in the policy's `match` section",
+            "B": "Install the CRD in the kyverno namespace",
+            "C": "Enable the `CRDValidation` feature gate",
+            "D": "Use `ClusterPolicy` instead of `Policy`"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno metric tracks the number of policy violations?",
+        "options": {
+            "A": "kyverno_policy_violations_total",
+            "B": "policy_validation_failures",
+            "C": "kyverno_violations_count",
+            "D": "policy_evaluation_errors"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the `failurePolicy` field in a ValidatingWebhookConfiguration?",
+        "options": {
+            "A": "Define retry logic for failed webhook calls",
+            "B": "Specify whether to allow resources if the webhook fails",
+            "C": "Configure the severity level of policy violations",
+            "D": "Set the timeout for webhook requests"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you reference a ConfigMap from another namespace in a policy's context?",
+        "options": {
+            "A": "Use `context: [{ configMap: { name: 'my-config', namespace: 'other-ns' } }]`",
+            "B": "Set `namespace: 'other-ns'` in the policy metadata",
+            "C": "Add `crossNamespace: true` to the policy's `match` section",
+            "D": "Kyverno cannot reference ConfigMaps from other namespaces"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CLI command generates a policy report for all resources in a namespace?",
+        "options": {
+            "A": "kyverno report namespace my-ns",
+            "B": "kubectl get policyreport -n my-ns",
+            "C": "kyverno generate report my-ns",
+            "D": "kubectl describe policyreport -n my-ns"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What is the effect of `mutationFailureAction: Ignore` in a policy?",
+        "options": {
+            "A": "Blocks the resource if mutation fails",
+            "B": "Applies the resource without mutation on failure",
+            "C": "Retries the mutation up to 3 times",
+            "D": "Generates an error but allows the resource"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which CEL function checks if a string ends with a specific suffix?",
+        "options": {
+            "A": "endsWith(request.object.metadata.name, '-prod')",
+            "B": "request.object.metadata.name.endsWith('-prod')",
+            "C": "hasSuffix(request.object.metadata.name, '-prod')",
+            "D": "string.endsWith(request.object.metadata.name, '-prod')"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you configure Kyverno to use a custom Prometheus metrics port?",
+        "options": {
+            "A": "Set `metrics.port` in the Helm values",
+            "B": "Modify the `kyverno-svc` Service's port definition",
+            "C": "Use `--metrics-port=9090` during deployment",
+            "D": "Kyverno metrics port is fixed at 8000"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What permission is required for Kyverno to update existing resources with `mutate-existing` rules?",
+        "options": {
+            "A": "update",
+            "B": "patch",
+            "C": "edit",
+            "D": "mutate"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which field in a policy specifies the minimum Kyverno version required?",
+        "options": {
+            "A": "minVersion",
+            "B": "kyvernoVersion",
+            "C": "requiredVersion",
+            "D": "minimumKyvernoVersion"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you test a policy that is expected to fail a resource?",
+        "options": {
+            "A": "Set `expected: failure` in the test case",
+            "B": "Use `kyverno test --expect-failure`",
+            "C": "Mark the resource as `invalid: true` in the test file",
+            "D": "No special configuration needed; failures are detected automatically"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the purpose of the `severity` field in a policy rule?",
+        "options": {
+            "A": "Determine the order of policy execution",
+            "B": "Classify violations in PolicyReports",
+            "C": "Set the timeout for rule evaluation",
+            "D": "Define the RBAC permissions required"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "Which CEL expression checks if a pod has both 'app' and 'env' labels?",
+        "options": {
+            "A": "request.object.metadata.labels.app.exists() && request.object.metadata.labels.env.exists()",
+            "B": "request.object.metadata.labels.contains('app') AND request.object.metadata.labels.contains('env')",
+            "C": "all(request.object.metadata.labels, [app, env])",
+            "D": "request.object.metadata.labels.app != null || request.object.metadata.labels.env != null"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "How do you exclude a specific resource from all Kyverno policies?",
+        "options": {
+            "A": "Add the `policy.kubernetes.io/skip` annotation",
+            "B": "Create a PolicyException for the resource",
+            "C": "Use `exclude` in the policy's `match` section",
+            "D": "Delete the resource from the cluster"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which command lists all ClusterPolicies in the cluster?",
+        "options": {
+            "A": "kubectl get clusterpolicies",
+            "B": "kyverno list clusterpolicies",
+            "C": "kubectl get cp",
+            "D": "kyverno get cluster-policies"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the effect of `dryRun: true` in a `kyverno apply` command?",
+        "options": {
+            "A": "Evaluates policies without modifying resources",
+            "B": "Applies policies but rolls back changes after 30 seconds",
+            "C": "Runs policies in audit mode temporarily",
+            "D": "Generates a preview of policy changes"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which Kyverno component handles background scans and policy report aggregation?",
+        "options": {
+            "A": "Background controller",
+            "B": "Report controller",
+            "C": "Policy controller",
+            "D": "Webhook server"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "How do you configure a generate rule to create a resource in a specific namespace?",
+        "options": {
+            "A": "Set `targetNamespace: 'my-ns'` in the generate rule",
+            "B": "Omit `targetNamespace` (default to source namespace)",
+            "C": "Use `namespace: 'my-ns'` in the resource template",
+            "D": "Add `namespaceSelector: { matchLabels: { env: 'prod' } }`"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which field in a PolicyException specifies the policy to exclude?",
+        "options": {
+            "A": "policy",
+            "B": "excludedPolicy",
+            "C": "policyName",
+            "D": "skipPolicy"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "What is the correct way to use a regex in a `match` block to target resources with names starting with 'app-'?",
+        "options": {
+            "A": "names: [\"regex:app-.*\"]",
+            "B": "names: [\"glob:app-*\"]",
+            "C": "names: [\"app-*\"]",
+            "D": "names: [\"regex:^app-.*$\"]"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CLI command validates a policy's syntax without applying it?",
+        "options": {
+            "A": "kyverno validate policy.yaml",
+            "B": "kyverno check policy.yaml",
+            "C": "kyverno lint policy.yaml",
+            "D": "kyverno verify policy.yaml"
+        },
+        "answer": "C"
+    },
+    {
+        "question": "How do you configure Kyverno to skip policy evaluation for kube-system resources by default?",
+        "options": {
+            "A": "Set `excludeNamespaces: [kube-system]` in the kyverno-config ConfigMap",
+            "B": "Create a global PolicyException for kube-system",
+            "C": "Use `--skip-system` during Kyverno installation",
+            "D": "Add `system: true` to the namespace metadata"
+        },
+        "answer": "A"
+    },
+    {
+        "question": "Which CEL expression checks if a container's memory limit is at least 1Gi?",
+        "options": {
+            "A": "request.object.spec.containers[0].resources.limits.memory >= '1Gi'",
+            "B": "request.object.spec.containers[0].resources.limits.memory.numericValue() >= 1073741824",
+            "C": "request.object.spec.containers[0].resources.limits.memory.toBytes() >= 1073741824",
+            "D": "request.object.spec.containers[0].resources.limits.memory.matches('^1Gi$')"
+        },
+        "answer": "B"
+    },
+    {
+        "question": "What is the purpose of the `owned: true` field in a generate rule?",
+        "options": {
+            "A": "The generated resource is deleted when the source resource is deleted",
+            "B": "Kyverno becomes the owner of the source resource",
+            "C": "The generated resource cannot be modified manually",
+            "D": "The source resource inherits labels from the generated resource"
+        },
+        "answer": "A"
     }
 ]
